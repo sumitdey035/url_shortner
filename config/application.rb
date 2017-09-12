@@ -24,3 +24,7 @@ module UrlShortner
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
+
+# require libraries
+Dir.glob(Rails.root.to_s + '/lib/*.rb').each { |lib| require lib }
+require "url_shortner"

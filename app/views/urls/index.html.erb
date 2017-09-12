@@ -1,0 +1,25 @@
+<%= form_tag '/urls', remote: true, class: 'form-inline' do %>
+  <div class="form-group">
+    <%= label_tag :url %>
+    <%= text_field_tag :url, nil, class: 'form-control' %>
+  </div>
+  <%= submit_tag :generate, class: 'btn btn-default' %>
+<% end %>
+
+<table class='table'>
+  <thead>
+    <th>Url</th>
+    <th>Shorten</th>
+    <th>Hit</th>
+  </thead>
+  <tbody>
+    <% @urls.each do |url| %>
+      <tr>
+        <td><%= url.url %></td>
+        <td><%= url.shorten_url.link(request.base_url) %></td>
+        <td><%= url.hit_count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
