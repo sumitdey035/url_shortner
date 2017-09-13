@@ -1,25 +1,35 @@
-<%= form_tag '/urls', remote: true, class: 'form-inline' do %>
-  <div class="form-group">
-    <%= label_tag :url %>
-    <%= text_field_tag :url, nil, class: 'form-control' %>
+<%= form_tag '/urls', remote: true, class: 'form-horizontal' do %>
+  <div class="input-group">
+    <%= text_field_tag :url, nil, class: 'form-control input-lg', placeholder: 'Paste a link to shorten', autocomplete: 'off' %>
+    <span class="input-group-btn">
+      <%= submit_tag :Shorten, class: 'btn btn-default btn-lg' %>
+    </span>
   </div>
-  <%= submit_tag :generate, class: 'btn btn-default' %>
 <% end %>
 
-<table class='table'>
-  <thead>
+<div class="alert alert-success hidden" role="alert">
+  Shorten URL: <a href="#" class="alert-link" target="_BLANK"></a>
+  <button class="btn btn-default copy_link btn-xs">Copy</button>
+</div>
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">List of top 50 most used urls</div>
+  <table class='table table-bordered'>
+    <thead>
     <th>Url</th>
     <th>Shorten</th>
     <th>Hit</th>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     <% @urls.each do |url| %>
-      <tr>
-        <td><%= url.url %></td>
-        <td><%= url.shorten_url.link(request.base_url) %></td>
-        <td><%= url.hit_count %></td>
-      </tr>
+        <tr>
+          <td><%= url.url %></td>
+          <td><%= link_to url.shorten_url.link(request.base_url), url.shorten_url.link(request.base_url), target: '_BLANK' %></td>
+          <td><%= url.hit_count %></td>
+        </tr>
     <% end %>
-  </tbody>
+    </tbody>
+  </table>
+</div>
 
-</table>
+

@@ -3,7 +3,7 @@ class ShortenUrl < ActiveRecord::Base
 
   validates :url_id, :uniq_id, :expired_at, presence: true
 
-  def link(domain)
-    "#{domain}/#{uniq_id}"
+  def link(base_url)
+    "#{base_url}/#{uniq_id}"
   end
 end

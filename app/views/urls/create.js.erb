@@ -1,1 +1,4 @@
-alert('<%= @url.shorten_urls.last.uniq_id %>')
+$('.alert-success').removeClass('hidden');
+$('.alert-success .alert-link')
+  .attr('href', '<%= @url.shorten_url.link(request.base_url) %>')
+  .html('<%= @url.shorten_url.link(request.base_url) %>');

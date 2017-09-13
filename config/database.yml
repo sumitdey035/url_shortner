@@ -11,6 +11,11 @@ development:
   database: url_shortner_development
   password: postgres
 
+test:
+  <<: *default
+  database: url_shortner_test
+  password: postgres
+
 production:
   <<: *default
   database: url_shortner_production

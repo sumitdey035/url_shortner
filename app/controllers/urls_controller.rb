@@ -5,7 +5,7 @@ class UrlsController < ApplicationController
 
   def create
     @url = Url.where(url: params[:url]).first_or_create
-    @url.shorten_url.create( uniq_id: @url.shorten, expired_at: Time.now.utc + 1.year )
+    @url.build_shorten_url.update( uniq_id: @url.shorten, expired_at: Time.now.utc + 1.year ) unless @url.shorten_url
   end
 
   def show

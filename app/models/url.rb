@@ -6,6 +6,6 @@ class Url < ActiveRecord::Base
   validates :url, presence: true
 
   def shorten
-    encode(id)
+    encode
   end
 end
