@@ -1,3 +1,9 @@
+<% if notice %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= notice %>
+  </div>
+<% end %>
 <%= form_tag '/urls', remote: true, class: 'form-horizontal' do %>
   <div class="input-group">
     <%= text_field_tag :url, nil, class: 'form-control input-lg', placeholder: 'Paste a link to shorten', autocomplete: 'off' %>
