@@ -1,7 +1,9 @@
 # URL Shortner
 
 The application should be able to put a URL into the home page and get back a urlof
-the shortest possiblelength.
+the shortest possiblelength. I have used here base 36 numbering system. so This means 
+1 million records in the database would only require 4 characters (1,000,000 base 10 is 
+‘lfls’ base 36). And the 200 million records will use only 6 characters .
 
 * Ruby and Rails version
     * Ruby version: 2.2.3
