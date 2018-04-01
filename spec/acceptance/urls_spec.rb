@@ -11,7 +11,8 @@ resource 'Urls' do
     example 'Listing orders' do
       do_request
       expect(status).to eq 200
-      expect(JSON.parse response_body).to eq({"shorlUrl"=>"http://example.org/0"})
+      url = Url.find_by(url: params['longUrl'])
+      expect(JSON.parse response_body).to eq({"shorlUrl"=>"http://example.org/#{url.shorten}"})
     end
   end
 end

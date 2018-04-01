@@ -16,13 +16,15 @@ ActiveRecord::Schema.define(version: 20170912160933) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "shorten_urls", primary_key: "uniq_id", force: :cascade do |t|
+  create_table "shorten_urls", force: :cascade do |t|
+    t.string   "uniq_id"
     t.integer  "url_id",     null: false
     t.datetime "expired_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "shorten_urls", ["uniq_id"], name: "index_shorten_urls_on_uniq_id", unique: true, using: :btree
   add_index "shorten_urls", ["url_id"], name: "index_shorten_urls_on_url_id", using: :btree
 
   create_table "urls", force: :cascade do |t|

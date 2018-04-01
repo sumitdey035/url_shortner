@@ -9,4 +9,10 @@ class Url < ActiveRecord::Base
   def shorten
     encode
   end
+
+  # Generate new or return previously created shorten url
+  def generate_short_url(base_url)
+    build_shorten_url.update( uniq_id: shorten, expired_at: Time.now.utc + 1.year ) unless shorten_url
+    shorten_url.link(base_url)
+  end
 end
