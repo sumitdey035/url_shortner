@@ -3,4 +3,10 @@ Rails.application.routes.draw do
   root 'urls#index'
 
   get '/:id' => 'urls#show'
+
+  namespace :api do
+    namespace :v1 do
+      resources :urls, only: [:create]
+    end
+  end
 end
