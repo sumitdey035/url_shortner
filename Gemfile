@@ -18,9 +18,10 @@ group :development do
 end
 
 group :development, :test do
+  gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.6'
+  gem 'rspec_api_documentation'
   gem 'factory_girl_rails'
-  gem 'pry-rails'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'faker'
