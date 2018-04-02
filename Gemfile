@@ -8,6 +8,7 @@ gem 'turbolinks'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'pg', '0.18.2'
 gem 'puma'
+gem 'devise'
 
 group :development do
   gem 'capistrano', '~> 3.9.1'

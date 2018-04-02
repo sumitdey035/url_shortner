@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :accounts
   resources :urls, only: [:index, :create, :show]
   root 'urls#index'
 
