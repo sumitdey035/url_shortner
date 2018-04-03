@@ -1,5 +1,6 @@
 module Api::V1
   class UrlsController < ApplicationController
+    skip_before_action :authenticate_account!
     before_action :doorkeeper_authorize!
 
     def create
