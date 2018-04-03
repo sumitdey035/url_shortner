@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :apps
   use_doorkeeper
 
   get '/access_oauth_client_apps', to: 'doorkeeper_client_authorization_#access_oauth_client_apps'

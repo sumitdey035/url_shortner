@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 20180403113122) do
 
   create_table "oauth_applications", force: :cascade do |t|
     t.string   "name",                      null: false
+    t.string   "link",                      null: false
+    t.string   "description",               null: false
     t.string   "uid",                       null: false
     t.string   "secret",                    null: false
     t.text     "redirect_uri",              null: false
