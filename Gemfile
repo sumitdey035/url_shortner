@@ -10,6 +10,7 @@ gem 'pg', '0.18.2'
 gem 'puma'
 gem 'devise'
 gem 'doorkeeper'
+gem 'quiet_assets'
 
 group :development do
   gem 'capistrano', '~> 3.9.1'

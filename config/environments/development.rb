@@ -41,8 +41,10 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  Rails.application.configure do
-    ENV['CLIENT_USER'] = 'oauth_client'
-    ENV['CLIENT_PASSWORD'] = 'password'
-  end
+  config.assets.quiet = true
+
+  # Rails.application.configure do
+  #   ENV['CLIENT_USER'] = 'oauth_client'
+  #   ENV['CLIENT_PASSWORD'] = 'password'
+  # end
 end
