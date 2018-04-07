@@ -26,13 +26,15 @@
     <ul class="collection with-header">
       <li class="collection-header"><h4>Urls</h4></li>
       <% @urls.each do |url| %>
-        <a href=<%= url_path(url) %> class="collection-item">
+        <%= link_to url, class: "collection-item", remote: true do %>
           <span class="badge"><%= url.hit_count %></span>
           <%= url.shorten_url.link(request.base_url).sub('http://','') %>
-        </a>
+        <% end %>
       <% end %>
     </ul>
-    <div class="col s12 m8">
+  </div>
+  <div class="col s12 m8">
+    <div class="inner">
     </div>
   </div>
 </div>

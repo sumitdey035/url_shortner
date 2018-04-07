@@ -6,6 +6,7 @@
     </ul>
     <ul class="right hide-on-med-and-down">
       <% if account_signed_in? %>
+        <li><%= link_to 'Minilinks', urls_path %></li>
         <li><%= link_to 'Accounts', apps_path %></li>
         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><%= current_account.email %><i class="material-icons right">arrow_drop_down</i></a></li>
       <% else %>
@@ -16,8 +17,9 @@
 
     <ul id="nav-mobile" class="sidenav">
       <% if account_signed_in? %>
-        <li><%= link_to apps_path, 'Accounts' %></li>
         <li><a><i class="material-icons">account_circle</i><%= current_account.email %></a></li>
+        <li><%= link_to 'Minilinks', urls_path %></li>
+        <li><%= link_to 'Accounts', apps_path %></li>
         <li><%= link_to "Edit profile", edit_account_registration_path, method: :delete %></li>
         <li><%= link_to "Logout", destroy_account_session_path, method: :delete %></li>
       <% else %>

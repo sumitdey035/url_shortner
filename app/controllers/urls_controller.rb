@@ -18,5 +18,6 @@ class UrlsController < ApplicationController
     #   redirect_to root_path
     #   flash[:notice] = 'The url dose not exist'
     # end
+    render layout: false
   end
 end
