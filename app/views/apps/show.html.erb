@@ -1,29 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col s12 m4">
+    <ul class="collection with-header">
+      <li class="collection-header"><h4>Apps</h4></li>
+      <% @apps.each do |app| %>
+        <%= link_to app.name, app, class: 'collection-item'  %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col s12 m8">
+    <p>
+      <strong>Name:</strong>
+      <%= @app.name %>
+    </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @app.name %>
-</p>
+    <p>
+      <strong>Link:</strong>
+      <%= @app.link %>
+    </p>
 
-<p>
-  <strong>Link:</strong>
-  <%= @app.link %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @app.description %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @app.description %>
-</p>
+    <p>
+      <strong>Redirect uri:</strong>
+      <%= @app.redirect_uri %>
+    </p>
 
-<p>
-  <strong>Redirect uri:</strong>
-  <%= @app.redirect_uri %>
-</p>
+    <p>
+      <strong>Secret:</strong>
+      <%= @app.secret %>
+    </p>
 
-<p>
-  <strong>Secret:</strong>
-  <%= @app.secret %>
-</p>
-
-<%= link_to 'Edit', edit_app_path(@app) %> |
-<%= link_to 'Back', apps_path %>
+    <%= link_to 'Edit', edit_app_path(@app) %>
+  </div>
+</div>

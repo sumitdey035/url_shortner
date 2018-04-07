@@ -8,19 +8,23 @@ class AppsController < ApplicationController
 
   # GET /apps/1
   def show
+    @apps = App.all
   end
 
   # GET /apps/new
   def new
+    @apps = App.all
     @app = current_account.apps.new
   end
 
   # GET /apps/1/edit
   def edit
+    @apps = App.all
   end
 
   # POST /apps
   def create
+    @apps = App.all
     @app = current_account.apps.new(app_params)
 
     if @app.save
@@ -32,6 +36,7 @@ class AppsController < ApplicationController
 
   # PATCH/PUT /apps/1
   def update
+    @apps = App.all
     if @app.update(app_params)
       redirect_to @app, notice: 'App was successfully updated.'
     else
@@ -41,6 +46,7 @@ class AppsController < ApplicationController
 
   # DELETE /apps/1
   def destroy
+    @apps = App.all
     @app.destroy
     redirect_to apps_url, notice: 'App was successfully destroyed.'
   end
@@ -48,7 +54,7 @@ class AppsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_app
-      @app = current_account.apps.find(params[:id])
+      @app = App.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

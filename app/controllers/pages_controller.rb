@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
+  skip_before_action :authenticate_account!
+
   def welcome
-    render template: 'pages/welcome'
+    account_signed_in? ? redirect_to(urls_path) : render(template: 'pages/welcome')
   end
 
   # def show
