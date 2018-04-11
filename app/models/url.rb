@@ -2,6 +2,7 @@ class Url < ActiveRecord::Base
   include UrlShortner
 
   has_one :shorten_url
+  belongs_to :account
 
   validates :url, presence: true
 

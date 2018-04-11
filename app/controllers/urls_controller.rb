@@ -4,7 +4,7 @@ class UrlsController < ApplicationController
   end
 
   def create
-    @url = Url.where(url: params[:url]).first_or_create
+    @url = current_account.urls.where(url: url_params[:url]).first_or_create
     @url.build_shorten_url.update( uniq_id: @url.shorten, expired_at: Time.now.utc + 1.year ) unless @url.shorten_url
   end
 
@@ -19,5 +19,11 @@ class UrlsController < ApplicationController
     #   flash[:notice] = 'The url dose not exist'
     # end
     render layout: false
+  end
+
+  private
+  # Only allow a trusted parameter "white list" through.
+  def url_params
+    params.require(:url).permit(:url)
   end
 end

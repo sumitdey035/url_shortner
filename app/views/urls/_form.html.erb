@@ -1,0 +1,22 @@
+<!--<form class="col s12">-->
+<!--  <div class="row">-->
+<!--    <div class="input-field col s10">-->
+<!--      <input id="name" type="text" class="validate">-->
+<!--      <label for="name">Paste a link to shorten it</label>-->
+<!--    </div>-->
+<!--    <div class="input-field col s1">-->
+<!--      <button class="btn-large waves-effect waves-light orange" type="submit" name="action">Shorten</button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</form>-->
+<%= form_for(Url.new, remote: true, class: "col s12") do |f| %>
+  <div class="row">
+    <span class="input-field col s6 m9">
+      <%= f.label :url, 'Paste a link to shorten' %><br>
+      <%= f.text_field :url, class: 'validate' %>
+    </span>
+    <span class="input-field col s2 m2">
+      <%= f.submit class: "btn-large waves-effect waves-light orange" %>
+    </span>
+  </div>
+<% end %>
