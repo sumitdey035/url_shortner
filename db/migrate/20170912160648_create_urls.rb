@@ -4,6 +4,7 @@ class CreateUrls < ActiveRecord::Migration
       t.references :account, index: true
       t.text    :url, null: false
       t.integer :hit_count, default: 0
+      t.timestamps null: false
     end
   end
 end

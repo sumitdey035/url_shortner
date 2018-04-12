@@ -1,11 +1,13 @@
 class UrlsController < ApplicationController
   def index
-    @urls = Url.includes(:shorten_url).order(hit_count: :desc)
+    @urls = Url.includes(:shorten_url).order(created_at: :desc)
   end
 
   def create
-    @url = current_account.urls.where(url: url_params[:url]).first_or_create
-    @url.build_shorten_url.update( uniq_id: @url.shorten, expired_at: Time.now.utc + 1.year ) unless @url.shorten_url
+    @url = current_account.urls.find_or_initialize_by(url: url_params[:url])
+    @url.shorten_url || @url.build_shorten_url
+    @url.save
+    render layout: false
   end
 
   def show

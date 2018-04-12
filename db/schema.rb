@@ -89,9 +89,11 @@ ActiveRecord::Schema.define(version: 20180403113122) do
   add_index "shorten_urls", ["url_id"], name: "index_shorten_urls_on_url_id", using: :btree
 
   create_table "urls", force: :cascade do |t|
-    t.integer "account_id"
-    t.text    "url",                    null: false
-    t.integer "hit_count",  default: 0
+    t.integer  "account_id"
+    t.text     "url",                    null: false
+    t.integer  "hit_count",  default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "urls", ["account_id"], name: "index_urls_on_account_id", using: :btree

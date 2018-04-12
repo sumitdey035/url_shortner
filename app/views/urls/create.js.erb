@@ -1,4 +1,9 @@
-$('.alert-success').removeClass('hidden');
-$('.alert-success .alert-link')
-  .attr('href', '<%= @url.shorten_url.link(request.base_url) %>')
-  .html('<%= @url.shorten_url.link(request.base_url) %>');
+<% unless @url.errors.empty? %>
+  <% @url.errors.full_messages.each do |message| %>
+    US.Utility.toastError('<%= message %>')
+  <% end %>
+<% else %>
+  $('.urls').prepend('<%= j render @url %>');
+  $('.urls .url-item').first().click();
+  $('#new_url').find("input[type=text], textarea").val("");
+<% end %>

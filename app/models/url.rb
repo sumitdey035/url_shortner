@@ -1,10 +1,11 @@
 class Url < ActiveRecord::Base
   include UrlShortner
 
-  has_one :shorten_url
+  has_one :shorten_url, dependent: :destroy
   belongs_to :account
 
   validates :url, presence: true
+  validates :url, format: URI::regexp(%w(http https))
 
   # Encode the Url ID
   def shorten

@@ -12,6 +12,7 @@
  *
  *= require materialize.min
  *= require style
+ *= require toastr
  *= require_tree .
  *= require_self
  */

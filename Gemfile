@@ -11,6 +11,7 @@ gem 'puma'
 gem 'devise'
 gem 'doorkeeper'
 gem 'quiet_assets'
+gem 'toastr-rails'
 
 group :development do
   gem 'capistrano', '~> 3.9.1'

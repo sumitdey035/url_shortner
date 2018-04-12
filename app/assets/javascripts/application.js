@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require materialize.min
+//= require toastr
 //= require init
 //= require_tree .
