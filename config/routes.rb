@@ -6,9 +6,10 @@ Rails.application.routes.draw do
 
   devise_for :accounts
   resources :urls, only: [:index, :create, :show]
+  resources :shorten_urls, only: [:show]
   root 'pages#welcome'
 
-  get '/:id' => 'urls#show'
+  get '/:uniq_id' => 'shorten_urls#show'
 
   namespace :api do
     namespace :v1 do

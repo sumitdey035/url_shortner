@@ -1,5 +1,13 @@
-<%= link_to url, class: "url-item_#{url.id} collection-item", remote: true do %>
-  <%= url.title.truncate(50, separator: ' ') %>
-  <span class="badge"><%= url.hit_count %></span>
-  <%= url.shorten_url.link(request.base_url).sub('http://','') %>
+<%= link_to url, class: "url-item_#{url.id} collection-item avatar", remote: true do %>
+  <% if url.image_link %>
+    <%= image_tag url.image_link, class: 'circle' %>
+  <% else %>
+    <i class="material-icons circle">link</i>
+  <% end %>
+  <span class="title"><%= url.title.truncate(35, separator: ' ') %></span>
+  <p>
+    <%= url.shorten_url.link(request.base_url).sub('http://','') %><br>
+    <small><%= url.shorten_url.created_at.strftime('%b %d') %></small>
+  </p>
+  <span class="secondary-content">2<i class="material-icons" style="vertical-align: bottom;">insert_chart</i></span>
 <% end %>
