@@ -6,6 +6,7 @@ class UrlsController < ApplicationController
   def create
     @url = current_account.urls.find_or_initialize_by(url: url_params[:url])
     @url.shorten_url || @url.build_shorten_url
+    @url.set_default if @url.valid?
     @url.save
     render layout: false
   end

@@ -7,6 +7,11 @@ class Url < ActiveRecord::Base
   validates :url, presence: true
   validates :url, format: URI::regexp(%w(http https))
 
+  def set_default
+    page = MetaInspector.new(url)
+    assign_attributes(title: page.title, description: page.description, favicon_link: page.images.favicon, image_link: page.images.best)
+  end
+
   # Encode the Url ID
   def shorten
     encode

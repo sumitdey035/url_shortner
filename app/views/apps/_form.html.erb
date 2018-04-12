@@ -1,33 +1,33 @@
 <%= form_for(@app, remote: true) do |f| %>
-  <% if @app.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@app.errors.count, "error") %> prohibited this app from being saved:</h2>
-
-      <ul>
-      <% @app.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class='row'>
+    <div class='input-field col s12'>
+      <%= f.text_field :name, class: 'validate' %>
+      <%= f.label :name, 'Enter a name of app' %><br/>
     </div>
-  <% end %>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class='row'>
+    <div class='input-field col s12'>
+      <%= f.text_field :link, class: 'validate active' %>
+      <%= f.label :link, 'Enter url of app' %><br/>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :link %><br>
-    <%= f.text_field :link %>
+
+  <div class='row'>
+    <div class='input-field col s12'>
+      <%= f.text_area :description, class: 'materialize-textarea validate' %>
+      <%= f.label :description, 'Enter small description of app' %><br/>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+
+  <div class='row'>
+    <div class='input-field col s12'>
+      <%= f.text_field :redirect_uri, class: 'validate' %>
+      <%= f.label :redirect_uri, 'Enter redirect link of app' %><br/>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :redirect_uri %><br>
-    <%= f.text_field :redirect_uri %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class='row center'>
+    <%= f.submit "Save", class: 'btn waves-effect waves-light orange' %>
   </div>
 <% end %>

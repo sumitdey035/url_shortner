@@ -90,10 +90,14 @@ ActiveRecord::Schema.define(version: 20180403113122) do
 
   create_table "urls", force: :cascade do |t|
     t.integer  "account_id"
-    t.text     "url",                    null: false
-    t.integer  "hit_count",  default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.text     "url",                      null: false
+    t.string   "title"
+    t.text     "description"
+    t.string   "favicon_link"
+    t.string   "image_link"
+    t.integer  "hit_count",    default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "urls", ["account_id"], name: "index_urls_on_account_id", using: :btree

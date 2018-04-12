@@ -1,4 +1,5 @@
 <%= link_to url, class: "url-item_#{url.id} collection-item", remote: true do %>
+  <%= url.title %>
   <span class="badge"><%= url.hit_count %></span>
   <%= url.shorten_url.link(request.base_url).sub('http://','') %>
 <% end %>

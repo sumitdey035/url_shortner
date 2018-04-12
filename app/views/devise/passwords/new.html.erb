@@ -17,33 +17,29 @@
   <%= render "devise/shared/links" %>
 <% end %>
 
-<main>
-  <center>
-    <h5 class="orange-text">Please, put your account email</h5>
-    <div class="container">
-      <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
-        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: 'col s12') do |f| %>
-          <div class='row'>
-            <div class='input-field col s12'>
-              <i class='material-icons prefix'>account_box</i>
-              <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'validate' %>
-              <%= f.label :email, 'Enter your email' %><br/>
-            </div>
-          </div>
-
-          <br />
-          <center>
-            <div class='row'>
-              <%= f.submit "Send me reset password instructions", class: 'col s12 btn btn-large waves-effect waves-light orange' %>
-            </div>
-          </center>
-        <% end %>
+<h5 class="orange-text">Please, put your account email</h5>
+<div class="container">
+  <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: 'col s12') do |f| %>
+      <div class='row'>
+        <div class='input-field col s12'>
+          <i class='material-icons prefix'>account_box</i>
+          <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'validate' %>
+          <%= f.label :email, 'Enter your email' %><br/>
+        </div>
       </div>
-    </div>
-    <% if controller_name != 'sessions' %>
-      <%= link_to "Login", new_session_path(resource_name) %><br/>
+
+      <br />
+      <center>
+        <div class='row'>
+          <%= f.submit "Send me reset password instructions", class: 'col s12 btn btn-large waves-effect waves-light orange' %>
+        </div>
+      </center>
     <% end %>
-    <br />
-    <br />
-  </center>
-</main>
+  </div>
+</div>
+<% if controller_name != 'sessions' %>
+  <%= link_to "Login", new_session_path(resource_name) %><br/>
+<% end %>
+<br />
+<br />
