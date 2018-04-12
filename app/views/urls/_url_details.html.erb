@@ -1,8 +1,13 @@
 <div class="inner">
-  <h6>
-    <%= image_tag @url.image_link, width: '80px', height: '50px' %>
-    <%= @url.title %>
-  </h6>
-  <small><%= @url.description %></small>
+  <div class="row">
+    <h6 class="heading"><%= @url.title.truncate(75, separator: ' ') %></h6>
+    <p><small><%= link_to @url.url, @url.url %></small></p>
+    <p><small><%= link_to @url.shorten_url.link('http://localhost:3000'), @url.url %></small></p>
+  </div>
+  <hr />
+  <p>
+    <span class="right">Last hit: <%= @url.created_at %></span>
+    <span>Created: <%= @url.created_at %></span>
+  </p>
   <p><%= @url.hit_count %></p>
 </div>
