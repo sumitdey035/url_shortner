@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403113122) do
+ActiveRecord::Schema.define(version: 20180412164338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 20180403113122) do
 
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
   add_index "accounts", ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true, using: :btree
+
+  create_table "hits", force: :cascade do |t|
+    t.integer  "shorten_url_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "hits", ["shorten_url_id"], name: "index_hits_on_shorten_url_id", using: :btree
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
@@ -79,10 +87,11 @@ ActiveRecord::Schema.define(version: 20180403113122) do
 
   create_table "shorten_urls", force: :cascade do |t|
     t.string   "uniq_id"
-    t.integer  "url_id",     null: false
-    t.datetime "expired_at", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "url_id",                 null: false
+    t.datetime "expired_at",             null: false
+    t.integer  "hits_count", default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "shorten_urls", ["uniq_id"], name: "index_shorten_urls_on_uniq_id", unique: true, using: :btree
@@ -90,18 +99,18 @@ ActiveRecord::Schema.define(version: 20180403113122) do
 
   create_table "urls", force: :cascade do |t|
     t.integer  "account_id"
-    t.text     "url",                      null: false
+    t.text     "url",          null: false
     t.string   "title"
     t.text     "description"
     t.string   "favicon_link"
     t.string   "image_link"
-    t.integer  "hit_count",    default: 0
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "urls", ["account_id"], name: "index_urls_on_account_id", using: :btree
 
+  add_foreign_key "hits", "shorten_urls"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "shorten_urls", "urls"

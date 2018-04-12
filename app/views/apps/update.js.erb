@@ -4,5 +4,5 @@
   <% end %>
 <% else %>
   US.Utility.toastSuccess('The app has been updated successfully')
-  $('.edit_app').replaceWith('<%= j render @app %>')
+  $('.inner').html('<%= j render @app %>')
 <% end %>

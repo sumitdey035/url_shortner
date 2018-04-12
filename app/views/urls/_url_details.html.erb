@@ -6,8 +6,8 @@
   </div>
   <hr />
   <p>
-    <span class="right">Last hit: <%= @url.created_at %></span>
+    <span class="right">Last hit: <%= @url.shorten_url.hits.first.created_at %></span>
     <span>Created: <%= @url.created_at %></span>
   </p>
-  <p><%= @url.hit_count %> Total hit</p>
+  <p><%= @url.shorten_url.hits_count %> Total hit</p>
 </div>

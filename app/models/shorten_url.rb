@@ -1,5 +1,6 @@
 class ShortenUrl < ActiveRecord::Base
   belongs_to :url
+  has_many :hits, -> { order(created_at: :desc) }, dependent: :destroy
 
   validates :url_id, :uniq_id, :expired_at, presence: true
   validates_uniqueness_of :uniq_id

@@ -9,5 +9,5 @@
     <%= url.shorten_url.link(request.base_url).sub('http://','') %><br>
     <small><%= url.shorten_url.created_at.strftime('%b %d') %></small>
   </p>
-  <span class="secondary-content">2<i class="material-icons" style="vertical-align: bottom;">insert_chart</i></span>
+  <span class="secondary-content"><%= url.shorten_url.hits_count %><i class="material-icons" style="vertical-align: bottom;">insert_chart</i></span>
 <% end %>
