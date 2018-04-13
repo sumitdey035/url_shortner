@@ -13,6 +13,7 @@ gem 'doorkeeper'
 gem 'quiet_assets'
 gem 'toastr-rails'
 gem 'metainspector'
+gem 'geocoder'
 
 group :development do
   gem 'capistrano', '~> 3.9.1'

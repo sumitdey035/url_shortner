@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 20180412164338) do
 
   create_table "hits", force: :cascade do |t|
     t.integer  "shorten_url_id"
+    t.string   "ip_address"
+    t.string   "country_code"
+    t.string   "country_name"
+    t.string   "region_code"
+    t.string   "region_name"
+    t.string   "city"
+    t.string   "zip_code"
+    t.string   "time_zone"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.string   "metro_code"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

@@ -3,7 +3,7 @@ class ShortenUrlsController < ApplicationController
 
   def show
     shorten_url = ShortenUrl.find_by(uniq_id: params[:uniq_id])
-    shorten_url.hits.build.save
+    shorten_url.hits.build(ip_address: request.remote_ip).save
     redirect_to shorten_url.url.url
   end
 end
