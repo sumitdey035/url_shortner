@@ -1,0 +1,53 @@
+<% if false %>
+  <div class="border-bottom mb-4">
+    <h1><%= t('.title') %></h1>
+  </div>
+
+  <p><%= link_to t('.new'), new_oauth_application_path, class: 'btn btn-success' %></p>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th><%= t('.name') %></th>
+      <th><%= t('.callback_url') %></th>
+      <th><%= t('.actions') %></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @applications.each do |application| %>
+      <tr id="application_<%= application.id %>">
+        <td class="align-middle">
+          <%= link_to application.name, oauth_application_path(application) %>
+        </td>
+        <td class="align-middle">
+          <%= application.redirect_uri %>
+        </td>
+        <td class="align-middle">
+          <%= link_to t('doorkeeper.applications.buttons.edit'), edit_oauth_application_path(application), class: 'btn btn-link' %>
+        </td>
+        <td class="align-middle">
+          <%= render 'delete_form', application: application %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<div class="row">
+  <div class="col s12 m4">
+    <ul class="collection with-header apps">
+      <li class="collection-header">
+        <h4>Apps</h4>
+        <%= link_to 'New App', new_oauth_application_path, remote: true %>
+      </li>
+      <% @applications.each do |application| %>
+        <%= link_to application.name, oauth_application_path(application), class: 'collection-item', remote: true  %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col s12 m8">
+    <div class="inner"></div>
+  </div>
+</div>

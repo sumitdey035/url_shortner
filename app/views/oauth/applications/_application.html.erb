@@ -1,0 +1,33 @@
+<p>
+  <strong>Name:</strong>
+  <%= @application.name %>
+</p>
+
+<% if false %>
+  <p>
+    <strong>Link:</strong>
+    <%= @application.link %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @application.description %>
+  </p>
+<% end %>
+
+<p>
+  <strong>Redirect uri:</strong>
+  <%= @application.redirect_uri %>
+</p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @application.uid %>
+</p>
+
+<p>
+  <strong>Secret:</strong>
+  <%= @application.secret %>
+</p>
+
+<%= link_to 'Edit', edit_oauth_application_path(@application), remote: true %>

@@ -5,6 +5,7 @@ class Account < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # has_many :oauth_applications, class_name: 'Doorkeeper::Application', foreign_key: :uid
-  has_many :apps, foreign_key: :uid, dependent: :destroy
+  has_many :oauth_applications, class_name: 'Doorkeeper::Application', as: :owner
+  # has_many :apps, foreign_key: :uid, dependent: :destroy
   has_many :urls, dependent: :destroy
 end

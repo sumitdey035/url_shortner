@@ -1,8 +1,0 @@
-<% unless @app.errors.empty? %>
-  <% @app.errors.full_messages.each do |message| %>
-    US.Utility.toastError('<%= message %>')
-  <% end %>
-<% else %>
-  US.Utility.toastSuccess('The app has been updated successfully')
-  $('.inner').html('<%= j render @app %>')
-<% end %>
